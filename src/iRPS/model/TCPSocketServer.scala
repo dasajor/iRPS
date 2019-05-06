@@ -61,6 +61,9 @@ class TCPSocketServer(gameActor: ActorRef) extends Actor {
         val y = (message \ "y").as[Double]
         gameActor ! MovePlayer(username, x, y)
       case "stop" => gameActor ! StopPlayer(username)
+      case "rock" => gameActor ! Rock(username)
+      case "paper" => gameActor ! Paper(username)
+      case "scissors" => gameActor ! Scissors(username)
     }
   }
 

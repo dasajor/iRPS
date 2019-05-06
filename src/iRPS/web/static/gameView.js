@@ -120,3 +120,16 @@ function drawGameObject2(x, y) {
     context.lineWidth = 1;
     context.fill()
 }
+
+
+function chooseRock() {
+    socket.emit("rock")
+}
+
+function choosePaper() {
+    socket.emit("paper")
+}
+
+function chooseScissors(){
+    socket.emit("scissors")
+}

@@ -20,6 +20,7 @@ class Game {
   var players: Map[String, Player] = Map()
   val playerSize: Double = 0.3
 
+
   var lastUpdateTime: Long = System.nanoTime()
 
 
@@ -123,7 +124,7 @@ class Game {
   }
 
   def checkForPlayerHits(): Unit = {
-    for( player1 <- players.values; player2 <- players.values) {
+    for(player1 <- players.values; player2 <- players.values){
       if((player1.inGame==false)&&(player2.inGame == false)){
         if(player1.location.distance2d(player2.location) < 0.3){
           player1.inGame = true
