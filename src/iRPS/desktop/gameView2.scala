@@ -14,7 +14,6 @@ import play.api.libs.json.{JsValue, Json}
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.paint.Paint
 import scalafx.scene.Group
-import model._
 
 
 object gameView2 extends JFXApp {
@@ -41,7 +40,7 @@ object gameView2 extends JFXApp {
         square0.fill = color
         square0
       }
-      def drawGameBoard(x, y): Unit = {
+      def drawGameBoard(x: Double, y: Double): Unit = {
         val gridWidth: Double = x
         val gridHeight: Double = y
         sceneGraphics.children.add(placeSquare(x, y, White))
@@ -90,14 +89,12 @@ object gameView2 extends JFXApp {
 
 
 
-      var keyStates: Map[String, Boolean] = Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
-
-      var keyStates: JsValue = Json.parse("""{
-        "w": false,
-        "a": false,
-        "s": false,
-        "d": false,
-      }"""")
+      var keyStates: JsValue = Json.obj(
+        "w" -> false,
+        "a" -> false,
+        "s" -> false,
+        "d" -> false,
+      )
 
       def keyPressed(keyCode: KeyCode): Unit = {
         keyCode.getName match {
