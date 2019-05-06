@@ -1,3 +1,5 @@
+package iRPS
+
 package iRPS.desktop
 
 import javafx.scene.input.{KeyCode, KeyEvent}
@@ -80,22 +82,44 @@ object gameView2 extends JFXApp {
 
       var keyStates: Map[String, Boolean] = Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
 
+      var keyStates: JsValue = Json.parse("""{
+        "w": false,
+        "a": false,
+        "s": false,
+        "d": false,
+      }"""")
+
       def keyPressed(keyCode: KeyCode): Unit = {
         keyCode.getName match {
-          case "W" => keyStates("w") = true
-          case "A" => keyStates("a") = true
-          case "S" => keyStates("s") = true
-          case "D" => keyStates("d") = true
+          case "W" => checkState(keyCode, true)
+          case "A" => checkState(keyCode, true)
+          case "S" => checkState(keyCode, true)
+          case "D" => checkState(keyCode, true)
+          case "ArrowUp" => checkState(keyCode, true)
+          case "ArrowLeft" => checkState(keyCode, true)
+          case "ArrowDown" => checkState(keyCode, true)
+          case "ArrowRight" => checkState(keyCode, true)
           case _ => println(keyCode.getName + " pressed with no action")
+        }
+      }
+
+      def checkState(keyCode: KeyCode, Boolean: Boolean): Unit = {
+        if (keyStates(keyCode.getName) != Boolean) {
+          keyStates(keyCode.getName) = Boolean
+          socket.emit("keyStates", Json.stringify(keyStates))
         }
       }
 
       def keyReleased(keyCode: KeyCode): Unit = {
         keyCode.getName match {
-          case "W" => keyStates("w") = false
-          case "A" => keyStates("a") = false
-          case "S" => keyStates("s") = false
-          case "D" => keyStates("d") = false
+          case "W" => checkState(keyCode, false)
+          case "A" => checkState(keyCode, false)
+          case "S" => checkState(keyCode, false)
+          case "D" => checkState(keyCode, false)
+          case "ArrowUp" => checkState(keyCode, false)
+          case "ArrowLeft" => checkState(keyCode, false)
+          case "ArrowDown" => checkState(keyCode, false)
+          case "ArrowRight" => checkState(keyCode, false)
           case _ => println(keyCode.getName + " pressed with no action")
         }
       }
