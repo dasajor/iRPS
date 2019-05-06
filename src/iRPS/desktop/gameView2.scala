@@ -31,7 +31,21 @@ object gameView2 extends JFXApp {
       fill = White
 
       var sceneGraphics: Group = new Group{}
-
+      val tileSize = 30
+      def placeSquare(x: Double, y: Double, color: Paint): Rectangle = {
+        val square0 = new Rectangle
+        square0.width = tileSize
+        square0.height = tileSize
+        square0.x = x
+        square0.y = y
+        square0.fill = color
+        square0
+      }
+      def drawGameBoard(x, y): Unit = {
+        val gridWidth: Double = x
+        val gridHeight: Double = y
+        sceneGraphics.children.add(placeSquare(x, y, White))
+      }
       def parseGameState(event: String): Unit = {
         val parsed: JsValue = Json.parse(event)
         val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
@@ -54,7 +68,7 @@ object gameView2 extends JFXApp {
         }
       }
 
-      val tileSize = 30
+
 
 
 
@@ -71,21 +85,9 @@ object gameView2 extends JFXApp {
         circle0
       }
 
-      def placeSquare(x: Double, y: Double, color: Paint): Rectangle = {
-        val square0 = new Rectangle
-        square0.width = tileSize
-        square0.height = tileSize
-        square0.x = x
-        square0.y = y
-        square0.fill = color
-        square0
-      }
 
-      def drawGameBoard(x, y): Unit = {
-        val gridWidth: Double = x
-        val gridHeight: Double = y
-        sceneGraphics.children.add(placeSquare(x, y, White))
-      }
+
+
 
 
       var keyStates: Map[String, Boolean] = Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
