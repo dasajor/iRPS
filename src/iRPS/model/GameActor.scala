@@ -26,9 +26,18 @@ class GameActor extends Actor {
     case message: RemovePlayer => game.removePlayer(message.username)
     case message: MovePlayer => game.players(message.username).move(new PhysicsVector(message.x, message.y))
     case message: StopPlayer => game.players(message.username).stop()
-    case message: Rock => game.players(message.username).choice = 1
-    case message: Paper => game.players(message.username).choice = 2
-    case message: Scissors => game.players(message.username).choice = 3
+    case message: Rock => {
+      if (game.players(message.username).inGame)
+        game.players(message.username).choice = 1
+    }
+    case message: Paper => {
+      if (game.players(message.username).inGame)
+        game.players(message.username).choice = 2
+    }
+    case message: Scissors => {
+      if (game.players(message.username).inGame)
+        game.players(message.username).choice = 3
+    }
 
     case UpdateGame =>
       game.update()

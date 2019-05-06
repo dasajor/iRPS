@@ -238,8 +238,8 @@ class Level {
   var towerLocations:List[GridLocation] = List()
   var wallLocations:List[GridLocation] = List()
 
-  var gridWidth: Int = 45
-  var gridHeight: Int = 21
+  var gridWidth: Int = 44
+  var gridHeight: Int = 20
 
   var startingLocation = new GridLocation(22, 10)
   var base = new GridLocation(24, 3)
