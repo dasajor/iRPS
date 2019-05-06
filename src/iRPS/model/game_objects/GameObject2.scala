@@ -3,7 +3,7 @@ package iRPS.model.game_objects
 import play.api.libs.json.{JsValue, Json}
 import iRPS.model.physics.PhysicsVector
 
-class DodgeBallTower(val x: Int, val y: Int) extends GameObject {
+class GameObject2(val x: Int, val y: Int) extends GameObject {
 
   // The height at which projectiles are fired
   val height = 3.0

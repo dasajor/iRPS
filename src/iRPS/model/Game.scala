@@ -9,7 +9,7 @@ class Game {
 
   val world: World = new World(10)
 
-  var towers: List[DodgeBallTower] = List()
+  var towers: List[GameObject2] = List()
   var walls: List[Wall] = List()
   var projectiles: List[PhysicalObject] = List()
 
@@ -73,7 +73,7 @@ class Game {
   }
 
   def placeTower(x: Int, y: Int): Unit = {
-    towers = new DodgeBallTower(x, y) :: towers
+    towers = new GameObject2(x, y) :: towers
   }
 
 

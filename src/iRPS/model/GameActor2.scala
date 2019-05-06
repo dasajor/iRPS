@@ -1,14 +1,14 @@
 package iRPS.model
 
 import akka.actor.{Actor, ActorRef}
-import iRPS.model.game_objects.DodgeBallTower
+import iRPS.model.game_objects.GameObject2
 
 class GameActor2(gameActor: ActorRef, x: Int, y: Int) extends Actor {
 
   import context.dispatcher
   import scala.concurrent.duration._
 
-  val tower: DodgeBallTower = new DodgeBallTower(x, y)
+  val tower: GameObject2 = new GameObject2(x, y)
 
   // start firing as soon as tower is created
   gameActor ! SendGameState
