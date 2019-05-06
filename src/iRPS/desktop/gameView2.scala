@@ -78,19 +78,31 @@ object gameView2 extends JFXApp {
       }
 
 
-
+      var keyStates: Map[String, Boolean] = Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
 
       def keyPressed(keyCode: KeyCode): Unit = {
         keyCode.getName match {
-          case "W" => println("Yup")
-          case "A" => println("Yup")
-          case "S" => println("Yup")
-          case "D" => println("Yup")
+          case "W" => keyStates("w") = true
+          case "A" => keyStates("a") = true
+          case "S" => keyStates("s") = true
+          case "D" => keyStates("d") = true
+          case _ => println(keyCode.getName + " pressed with no action")
+        }
+      }
+
+      def keyReleased(keyCode: KeyCode): Unit = {
+        keyCode.getName match {
+          case "W" => keyStates("w") = false
+          case "A" => keyStates("a") = false
+          case "S" => keyStates("s") = false
+          case "D" => keyStates("d") = false
           case _ => println(keyCode.getName + " pressed with no action")
         }
       }
 
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
+
+      addEventHandler(KeyEvent.KEY_RELEASED, (event: KeyEvent) => keyReleased(event.getCode))
 
       content = List(sceneGraphics)
 
