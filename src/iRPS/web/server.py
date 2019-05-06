@@ -78,6 +78,7 @@ def chooseRock():
     message = {"username": request.sid, "action": "rock"}
     send_to_scala(message)
 
+
 @socket_server.on("paper")
 def choosePaper():
     message = {"username": request.sid, "action": "paper"}

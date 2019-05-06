@@ -11,7 +11,7 @@ class Player(inputLocation: PhysicsVector,
   var points: Int = 0
 
   def move(direction: PhysicsVector){
-    if (this.inGame == false) {
+    if(this.inGame == false) {
       val normalDirection = direction.normal2d()
       this.velocity = new PhysicsVector(normalDirection.x * speed, normalDirection.y * speed)
     }

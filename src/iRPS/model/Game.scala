@@ -124,14 +124,20 @@ class Game {
   }
 
   def checkForPlayerHits(): Unit = {
-    for(player1 <- players.values; player2 <- players.values){
-      if((player1.inGame==false)&&(player2.inGame == false)){
-        if(player1.location.distance2d(player2.location) < 0.3){
-          player1.inGame = true
-          player2.inGame = true
-          player1.stop()
-          player2.stop()
-          new Game2(player1,player2)
+    for(p1 <- players.keys) {
+      for (p2 <- players.keys) {
+        if (p2 != p1) {
+          val player1 = players(p1)
+          val player2 = players(p2)
+          if ((player1.inGame == false) && (player2.inGame == false)) {
+            if (player1.location.distance2d(player2.location) < playerSize * 2) {
+              player1.inGame = true
+              player2.inGame = true
+              player1.stop()
+              player2.stop()
+              new Game2(player1, player2)
+            }
+          }
         }
       }
     }
