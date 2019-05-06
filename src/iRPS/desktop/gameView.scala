@@ -103,58 +103,58 @@ object newGame extends JFXApp {
       } // gameparse ends
 
 
-      var keyStates: collection.mutable.Map[String, Boolean] = collection.mutable.Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
+  var keyStates: collection.mutable.Map[String, Boolean] = collection.mutable.Map("w" -> false, "a" -> false, "s" -> false, "d" -> false)
 
 
-      def keyPressed(keyCode: KeyCode): Unit = {
-        keyCode.getName match {
-          case "W" => checkState(keyCode, true)
-          case "A" => checkState(keyCode, true)
-          case "S" => checkState(keyCode, true)
-          case "D" => checkState(keyCode, true)
-          case "Up" => checkState(keyCode, true)
-          case "Left" => checkState(keyCode, true)
-          case "Down" => checkState(keyCode, true)
-          case "ArrowRight" => checkState(keyCode, true)
-          case _ => //print()
-        }
-      }
-
-      def checkState(keyCode: KeyCode, Boolean: Boolean): Unit = {
-        if (keyStates(keyCode.getName) != Boolean) {
-          keyStates(keyCode.getName) = Boolean
-          print(keyStates)
-          //socket.emit("keyStates", Json.parse(writes(keyStates)))
-        }
-      }
-
-      //def writes(collection.mutable.Map: Map[String,Boolean]): JsValue = Json.obj(
-      //  "w" -> JsBoolean(keyStates("w")),
-      //   "a" -> JsBoolean(keyStates("a")),
-      //   "s" -> JsBoolean(keyStates("s")),
-      //   "d" -> JsBoolean(keyStates("d")),
-      //)
-
-      def keyReleased(keyCode: KeyCode): Unit = {
-        keyCode.getName match {
-          case "W" => checkState(keyCode, false)
-          case "A" => checkState(keyCode, false)
-          case "S" => checkState(keyCode, false)
-          case "D" => checkState(keyCode, false)
-          case "Up" => checkState(keyCode, false)
-          case "Left" => checkState(keyCode, false)
-          case "Down" => checkState(keyCode, false)
-          case "ArrowRight" => checkState(keyCode, false)
-          case _ => //print()
-        }
-      }
-
-      addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
-
-      //addEventHandler(KeyEvent.KEY_RELEASED, (event: KeyEvent) => keyReleased(event.getCode))
-
+  def keyPressed(keyCode: KeyCode): Unit = {
+    keyCode.getName match {
+      case "W" => checkState(keyCode, true)
+      case "A" => checkState(keyCode, true)
+      case "S" => checkState(keyCode, true)
+      case "D" => checkState(keyCode, true)
+      case "Up" => checkState(keyCode, true)
+      case "Left" => checkState(keyCode, true)
+      case "Down" => checkState(keyCode, true)
+      case "ArrowRight" => checkState(keyCode, true)
+      case _ => //print()
     }
   }
+
+  def checkState(keyCode: KeyCode, Boolean: Boolean): Unit = {
+    if (keyStates(keyCode.getName) != Boolean) {
+      keyStates(keyCode.getName) = Boolean
+      print(keyStates)
+      //socket.emit("keyStates", Json.parse(writes(keyStates)))
+    }
+  }
+
+  //def writes(collection.mutable.Map: Map[String,Boolean]): JsValue = Json.obj(
+  //  "w" -> JsBoolean(keyStates("w")),
+  //   "a" -> JsBoolean(keyStates("a")),
+  //   "s" -> JsBoolean(keyStates("s")),
+  //   "d" -> JsBoolean(keyStates("d")),
+  //)
+
+  def keyReleased(keyCode: KeyCode): Unit = {
+    keyCode.getName match {
+      case "W" => checkState(keyCode, false)
+      case "A" => checkState(keyCode, false)
+      case "S" => checkState(keyCode, false)
+      case "D" => checkState(keyCode, false)
+      case "Up" => checkState(keyCode, false)
+      case "Left" => checkState(keyCode, false)
+      case "Down" => checkState(keyCode, false)
+      case "ArrowRight" => checkState(keyCode, false)
+      case _ => //print()
+    }
+  }
+
+  addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
+
+  //addEventHandler(KeyEvent.KEY_RELEASED, (event: KeyEvent) => keyReleased(event.getCode))
+
+}
+}
 
 
 
