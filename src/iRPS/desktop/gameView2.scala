@@ -43,8 +43,6 @@ object gameView2 extends JFXApp {
       }
 
       def drawGameBoard(x: Double, y: Double): Unit = {
-        val gridWidth: Double = x
-        val gridHeight: Double = y
         sceneGraphics.children.add(placeSquare(x, y, White))
       }
 
