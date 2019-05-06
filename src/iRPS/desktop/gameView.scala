@@ -33,17 +33,11 @@ object gameView extends JFXApp {
         override def call(objects: Object*): Unit = {
           val message = objects.apply(0).toString
           val gameState: JsValue = Json.parse(message)
+          Platform.runLater(() => {
           parseGameState(message)
-        }
+        })
       }
-
-
-
-
-
-
-
-
+      }
 
       fill = White
 
