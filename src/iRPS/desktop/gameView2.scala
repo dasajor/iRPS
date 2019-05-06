@@ -54,10 +54,10 @@ object gameView2 extends JFXApp {
 
         drawGameBoard(gx, gy)
 
-        val player: List[Map[String, JsValue]] = (parsed \ "players").as[List[Map[String, JsValue]]]
+        val player: List[JsValue] = (parsed \ "players").as[List[JsValue]]
         for (i <- player) {
-          val px = i("x").as[Double]
-          val py = i("y").as[Double]
+          val px = (i \ "x").as[Double]
+          val py = (i \ "y").as[Double]
 
           val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
           for (d <- playerid) {
