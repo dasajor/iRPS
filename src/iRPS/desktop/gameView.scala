@@ -38,14 +38,15 @@ object newGame extends JFXApp {
       fill = White
 
       var sceneGraphics: Group = new Group {}
-      val tileSize = 30
+      val tileSize: Double = 30
 
       def placeSquare(x: Double, y: Double, color: Paint): Unit = {
         val square0 = new Rectangle
         square0.width = tileSize
         square0.height = tileSize
-        square0.x = x
-        square0.y = y
+        square0.x = x * tileSize
+        square0.y = y * tileSize
+        square0.stroke = Black
         square0.fill = color
         sceneGraphics.children.add(square0)
         content = List(sceneGraphics)
@@ -66,17 +67,18 @@ object newGame extends JFXApp {
       }
 
       def drawGameBoard(x: Double, y: Double): Unit = {
-        placeSquare(x, y, Black)
+        placeSquare(x, y, White)
       }
-drawGameBoard(44, 19)
+
+      for(a <- 1 to 44; b <- 1 to 19){
+        drawGameBoard(a, b)
+      }
+
       def parseGameState(event: String): Unit = {
         val parsed: JsValue = Json.parse(event)
         val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
         val player: List[JsValue] = (parsed \ "players").as[List[JsValue]]
 
-        for(a <- 1 to 44; b <- 1 to 19){
-          drawGameBoard(a, b)
-        }
 //        var gx = gridSize("x").as[Int]
 //        var j = 0
 //        for (j <- 0 until 44){
