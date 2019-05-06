@@ -14,6 +14,8 @@ import play.api.libs.json.{JsValue, Json}
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.paint.Paint
 import scalafx.scene.Group
+import model._
+
 
 object gameView2 extends JFXApp {
 
@@ -26,18 +28,29 @@ object gameView2 extends JFXApp {
     title.value = "Test"
     scene = new Scene(1280, 720) {
 
-
       fill = White
 
       var sceneGraphics: Group = new Group{}
 
-      def parseGameState(event): Unit = {
-        val gameState = Json.parse(event)
+      def parseGameState(event: String): Unit = {
+        val parsed: JsValue = Json.parse(event)
+        val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
+        for (j <- gridSize) {
+          val gx = j("x")
+          val gy = j("y")
 
-        drawGameBoard(gameState["gridSize"])
+          drawGameBoard(gx, gy)
+        }
+        val player: List[Map[String, JsValue]] = (parsed \ "players").as[List[Map[String, JsValue]]]
+        for (i <- player) {
+          val px = i("x").as[Double]
+          val py = i("y").as[Double]
 
-        for (var x <- gameState["players"]) {
-          sceneGraphics.children.add(placeCircle(player["x"], player["y"], player["id"], 2.0))
+        val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
+        for (d <- playerid) {
+          val id = d._2.as[String]
+
+          sceneGraphics.children.add(placeCircle(px, py, id, 2.0))
         }
       }
 

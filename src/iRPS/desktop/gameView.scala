@@ -11,6 +11,7 @@ import io.socket.emitter.Emitter
 import play.api.libs.json.{JsValue, Json}
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.paint.Paint
+import iRPS.model._
 
 object gameView extends JFXApp {
 
