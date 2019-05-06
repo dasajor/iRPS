@@ -18,7 +18,7 @@ function parseGameState(event) {
     const health = gameState['baseHealth'];
     const maxHealth = gameState['maxBaseHealth'];
     const percentHealth = health / maxHealth;
-    const color = rgb(percentHealth * 255, percentHealth * 255, 0);
+    //const color = rgb(percentHealth * 255, percentHealth * 255, 0);
 
     //placeSquare(gameState['base']['x'], gameState['base']['y'], '#bbbbbb');
 
