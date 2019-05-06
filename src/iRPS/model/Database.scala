@@ -74,7 +74,7 @@ object Database {
     val result: ResultSet = statement.executeQuery()
 
     result.next()
-    player.score = result.getDouble("points")
+    player.points= result.getDouble("points")
     player.location.x = result.getDouble("locationX")
     player.location.y = result.getDouble("locationY")
     player.velocity.x = result.getDouble("velocityX")

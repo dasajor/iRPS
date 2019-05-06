@@ -8,7 +8,7 @@ class Player(inputLocation: PhysicsVector,
   val speed: Double = 4.0
   var inGame: Boolean = false
   var choice: Int = 0
-  var points: Int = 0
+  var points: Double = 0
 
   def move(direction: PhysicsVector){
     if(this.inGame == false) {
