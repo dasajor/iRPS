@@ -119,18 +119,20 @@ class Game {
 
     Json.stringify(Json.toJson(gameState))
   }
-
-
-
-
   def checkForBaseDamage(): Unit = {
-    // TODO: Objective 1
   }
-
 
   def checkForPlayerHits(): Unit = {
-    // TODO: Objective 3
+    for( player1 <- players.values; player2 <- players.values) {
+      if((player1.inGame==false)&&(player2.inGame == false)){
+        if(player1.location.distance2d(player2.location) < 0.3){
+          player1.inGame = true
+          player2.inGame = true
+          player1.stop()
+          player2.stop()
+          new Game2(player1,player2)
+        }
+      }
+    }
   }
-
-
 }
