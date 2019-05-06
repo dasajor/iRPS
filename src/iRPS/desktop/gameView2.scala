@@ -41,8 +41,6 @@ object gameView2 extends JFXApp {
         square0
       }
       def drawGameBoard(x: Double, y: Double): Unit = {
-        val gridWidth: Double = x
-        val gridHeight: Double = y
         sceneGraphics.children.add(placeSquare(x, y, White))
       }
       def parseGameState(event: String): Unit = {
