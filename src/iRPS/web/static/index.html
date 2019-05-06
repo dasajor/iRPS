@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <title>RPS.io</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <style>
+        button {
+            bottom: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width:180px;
+            background-color: white;
+        }
+        .buttons {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
 
 <canvas id="canvas">
 </canvas>
+
+<div style="color:white" class="container">
+    Score: <input id="score" type="text" name="score" value="0.0" readonly>
+    <div class="buttons">
+        <button style="position:absolute;left:28%;width:10%" type="button" onclick="chooseRock()">Rock</button>
+        <button style="position:absolute;left:45%;width:10%" type="button" onclick="choosePaper()">Paper</button>
+        <button style="position:absolute;left:61%;width:10%" type="button" onclick="chooseScissors()">Scissors</button>
+
+    </div>
+</div>
+
 
 <script src="gameView.js"></script>
 <script src="inputController.js"></script>
