@@ -41,34 +41,32 @@ object gameView2 extends JFXApp {
         square0
       }
       def drawGameBoard(x: Double, y: Double): Unit = {
+        val gridWidth: Double = x
+        val gridHeight: Double = y
         sceneGraphics.children.add(placeSquare(x, y, White))
       }
       def parseGameState(event: String): Unit = {
         val parsed: JsValue = Json.parse(event)
         val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
-        for (j <- gridSize) {
-          val gx = j("x")
-          val gy = j("y")
+        //        for (j <- gridSize) {
+        val gx = gridSize("x").as[Double]
+        val gy = gridSize("y").as[Double]
 
-          drawGameBoard(gx, gy)
-        }
+        drawGameBoard(gx, gy)
+
         val player: List[Map[String, JsValue]] = (parsed \ "players").as[List[Map[String, JsValue]]]
         for (i <- player) {
           val px = i("x").as[Double]
           val py = i("y").as[Double]
 
-        val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
-        for (d <- playerid) {
-          val id = d._2.as[String]
+          val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
+          for (d <- playerid) {
+            val id = d._2.as[String]
 
-          sceneGraphics.children.add(placeCircle(px, py, id, 2.0))
+            sceneGraphics.children.add(placeCircle(px, py, id, 2.0))
+          }
         }
       }
-
-
-
-
-
       def placeCircle(x: Double, y: Double, color: String, radius: Double): Circle = {
         val circle0 = new Circle
         circle0.radius = 6
@@ -81,11 +79,6 @@ object gameView2 extends JFXApp {
         }
         circle0
       }
-
-
-
-
-
 
       var keyStates: JsValue = Json.obj(
         "w" -> false,
