@@ -85,7 +85,7 @@ class Game {
 
 
   def startingVector(): PhysicsVector = {
-    new PhysicsVector(level.startingLocation.x + 0.5, level.startingLocation.y + 0.5)
+    new PhysicsVector(level.gridWidth * Math.random(), level.gridHeight * Math.random())
   }
 
 

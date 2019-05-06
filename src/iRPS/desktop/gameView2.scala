@@ -47,23 +47,24 @@ object gameView2 extends JFXApp {
       }
       def parseGameState(event: String): Unit = {
         val parsed: JsValue = Json.parse(event)
-        val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
+        val gridSize: List[JsValue] = (parsed \ "gridSize").as[List[JsValue]]
         for (j <- gridSize) {
-          val gx = j("x")
-          val gy = j("y")
+          val gx = (j \ "x").as[Double]
+          val gy = (j \ "y").as[Double]
 
           drawGameBoard(gx, gy)
         }
-        val player: List[Map[String, JsValue]] = (parsed \ "players").as[List[Map[String, JsValue]]]
+        val player: List[JsValue] = (parsed \ "players").as[List[JsValue]]
         for (i <- player) {
-          val px = i("x").as[Double]
-          val py = i("y").as[Double]
+          val px = (i \ "x").as[Double]
+          val py = (i \ "y").as[Double]
 
-        val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
-        for (d <- playerid) {
-          val id = d._2.as[String]
+          val playerid: Map[String, JsValue] = (parsed \ "id").as[Map[String, JsValue]]
+          for (d <- playerid) {
+            val id = d._2.as[String]
 
-          sceneGraphics.children.add(placeCircle(px, py, id, 2.0))
+            sceneGraphics.children.add(placeCircle(px, py, id, 2.0))
+          }
         }
       }
 
