@@ -15,13 +15,13 @@ class GameObject2(val x: Int, val y: Int) extends GameObject {
   val projectileVelocity = 5.0
 
 
-  def fire(jsonGameState: String): List[Projectile] = {
+  def fire(jsonGameState: String): List[GameObject3] = {
     // TODO: Objective 2
     List()
   }
 
 
-  def aimFire(jsonGameState: String): List[Projectile] = {
+  def aimFire(jsonGameState: String): List[GameObject3] = {
     // TODO: Bonus Objective
     List()
   }

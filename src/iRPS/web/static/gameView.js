@@ -13,17 +13,8 @@ function parseGameState(event) {
 
     drawGameBoard(gameState['gridSize']);
 
-    //placeSquare(gameState['start']['x'], gameState['start']['y'], '#bbbbbb');
-
-    const health = gameState['baseHealth'];
-    const maxHealth = gameState['maxBaseHealth'];
-    const percentHealth = health / maxHealth;
-    //const color = rgb(percentHealth * 255, percentHealth * 255, 0);
-
-    //placeSquare(gameState['base']['x'], gameState['base']['y'], '#bbbbbb');
-
     for (let tower of gameState['towers']) {
-        drawTower(tower['x'], tower['y']);
+        drawGameObject2(tower['x'], tower['y']);
     }
 
     for (let player of gameState['players']) {
@@ -107,7 +98,7 @@ function yComp(degrees){
     return Math.sin(Math.PI*degrees/180.0)
 }
 
-function drawTower(x, y) {
+function drawGameObject2(x, y) {
     const size = 3.0;
 
     const scaledSize = size / 10.0 * tileSize;

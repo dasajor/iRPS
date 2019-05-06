@@ -2,8 +2,8 @@ package iRPS.model.game_objects
 
 import iRPS.model.physics.PhysicsVector
 
-class Projectile(location: PhysicsVector,
-                 velocity: PhysicsVector)
+class GameObject3(location: PhysicsVector,
+                  velocity: PhysicsVector)
   extends PhysicalObject(location, velocity) {
 
 

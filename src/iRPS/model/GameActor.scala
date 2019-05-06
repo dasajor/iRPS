@@ -1,7 +1,7 @@
 package iRPS.model
 
 import akka.actor.{Actor, ActorRef, PoisonPill, Props}
-import iRPS.model.game_objects.Projectile
+import iRPS.model.game_objects.GameObject3
 import iRPS.model.physics.PhysicsVector
 
 
@@ -38,6 +38,6 @@ class GameActor extends Actor {
     case projectile: AddProjectile =>
       val location = new PhysicsVector(projectile.x, projectile.y, projectile.z)
       val velocity = new PhysicsVector(projectile.xVelocity, projectile.yVelocity, projectile.zVelocity)
-      game.addProjectile(new Projectile(location, velocity))
+      game.addProjectile(new GameObject3(location, velocity))
   }
 }
