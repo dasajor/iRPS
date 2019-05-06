@@ -25,7 +25,7 @@ object Level {
           //new GridLocation(12,8)
         )
 
-        startingLocation = new GridLocation(0, 4)
+        startingLocation = new GridLocation(22, 10)
         base = new GridLocation(24, 4)
       }
     }else if(number == 1) {
@@ -241,7 +241,7 @@ class Level {
   var gridWidth: Int = 45
   var gridHeight: Int = 21
 
-  var startingLocation = new GridLocation(0, 3)
+  var startingLocation = new GridLocation(22, 10)
   var base = new GridLocation(24, 3)
 
   var maxBaseHealth = 2

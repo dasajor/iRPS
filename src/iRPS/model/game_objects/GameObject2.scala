@@ -5,13 +5,10 @@ import iRPS.model.physics.PhysicsVector
 
 class GameObject2(val x: Int, val y: Int) extends GameObject {
 
-  // The height at which projectiles are fired
   val height = 3.0
 
-  // Towers can only fire at players closer than this distance from the tower
   val sightRange = 5.0
 
-  // The magnitude of the velocity at which projectiles are fired
   val projectileVelocity = 5.0
 
 
