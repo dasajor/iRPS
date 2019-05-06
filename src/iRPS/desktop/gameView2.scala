@@ -81,15 +81,10 @@ object gameView2 extends JFXApp {
         square0
       }
 
-      def drawGameBoard(gridSize): Unit = {
-        val gridWidth: Double = gridSize["x"]
-        val gridHeight: Double = gridSize["y"]
-
-        var x = 0
-        var y = 0
-        for (x <- 0 to gridWidth, y <- 0 to gridHeight) {
-          sceneGraphics.children.add(placeSquare(x, y, White))
-        }
+      def drawGameBoard(x, y): Unit = {
+        val gridWidth: Double = x
+        val gridHeight: Double = y
+        sceneGraphics.children.add(placeSquare(x, y, White))
       }
 
 
