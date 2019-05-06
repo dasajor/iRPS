@@ -9,6 +9,8 @@ import io.socket.client.Socket
 import io.socket.client.IO
 import io.socket.emitter.Emitter
 import play.api.libs.json.{JsValue, Json}
+import scalafx.scene.shape.{Circle, Rectangle}
+import scalafx.scene.paint.Paint
 
 object gameView extends JFXApp {
 
@@ -24,12 +26,23 @@ object gameView extends JFXApp {
 
       fill = White
 
-      def placeCircle(): Unit = {
+      val tileSize = 30
 
+      def placeCircle(x: Double, y: Double, color: Paint, radius: Double): Unit = {
+        val circle0 = new Circle
+        circle0.radius = 6
+        circle0.centerX = x
+        circle0.centerY = y
+        circle0.fill = color
       }
 
-      def placeSquare(): Unit = {
-
+      def placeSquare(x: Double, y: Double, color: Paint): Unit = {
+        val square0 = new Rectangle
+        square0.width = tileSize
+        square0.height = tileSize
+        square0.x = x
+        square0.y = y
+        square0.fill = color
       }
 
 
