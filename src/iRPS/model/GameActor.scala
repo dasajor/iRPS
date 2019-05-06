@@ -18,7 +18,7 @@ class GameActor extends Actor {
     val level = Level(levelNumber)
     game.loadLevel(level)
     towers.foreach(child => child ! PoisonPill)
-    towers = for(t <- level.towerLocations) yield {context.actorOf(Props(classOf[TowerActor], self, t.x, t.y))}
+    towers = for(t <- level.towerLocations) yield {context.actorOf(Props(classOf[GameActor2], self, t.x, t.y))}
   }
 
   override def receive: Receive = {

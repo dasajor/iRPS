@@ -3,7 +3,7 @@ package iRPS.model
 import akka.actor.{Actor, ActorRef}
 import iRPS.model.game_objects.DodgeBallTower
 
-class TowerActor(gameActor: ActorRef, x: Int, y: Int) extends Actor {
+class GameActor2(gameActor: ActorRef, x: Int, y: Int) extends Actor {
 
   import context.dispatcher
   import scala.concurrent.duration._
