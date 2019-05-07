@@ -78,6 +78,7 @@ object newGame extends JFXApp {
       placeCircle(20, 20,"Blue", 0.3)
 
       def parseGameState(event: String): Unit = {
+        println(event)
         val parsed: JsValue = Json.parse(event)
         val gridSize: Map[String, JsValue] = (parsed \ "gridSize").as[Map[String, JsValue]]
         val player: List[JsValue] = (parsed \ "players").as[List[JsValue]]

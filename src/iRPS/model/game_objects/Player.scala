@@ -1,5 +1,6 @@
 package iRPS.model.game_objects
 
+import iRPS.model.Game2
 import iRPS.model.physics.PhysicsVector
 
 class Player(inputLocation: PhysicsVector,

@@ -4,6 +4,8 @@ import play.api.libs.json.{JsValue, Json}
 import iRPS.model.game_objects._
 import iRPS.model.physics.{Physics, PhysicsVector, World}
 
+import scala.collection.mutable.ListBuffer
+
 
 class Game {
 
@@ -19,6 +21,7 @@ class Game {
 
   var players: Map[String, Player] = Map()
   val playerSize: Double = 0.3
+  var games: Map[Player, Game2] = Map()
 
 
   var lastUpdateTime: Long = System.nanoTime()
@@ -94,6 +97,7 @@ class Game {
     val time: Long = System.nanoTime()
     val dt = (time - this.lastUpdateTime) / 1000000000.0
     Physics.updateWorld(this.world, dt)
+    parseGames()
     checkForPlayerHits()
     checkForBaseDamage()
     projectiles = projectiles.filter(po => !po.destroyed)
@@ -136,11 +140,25 @@ class Game {
               player2.inGame = true
               player1.stop()
               player2.stop()
-              new Game2(player1, player2)
+              val game = new Game2(player1, player2)
+              games += (player1 -> game)
+              games += (player2 -> game)
             }
           }
         }
       }
     }
   }
+  def parseGames(): Unit ={
+    for (g <- games.keys){
+      if(g.inGame == false){
+        games -= g
+        g.location = startingVector()
+      }
+      else {
+        games(g).RPS()
+      }
+    }
+  }
+
 }

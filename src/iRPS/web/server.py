@@ -73,22 +73,27 @@ def key_state(jsonKeyStates):
     message = {"username": request.sid, "action": "move", "x": x, "y": y}
     send_to_scala(message)
 
-@socket_server.on("rock")
-def chooseRock():
+
+@socket_server.on('rock')
+def choose_rock():
+    print("rock")
     message = {"username": request.sid, "action": "rock"}
     send_to_scala(message)
 
 
-@socket_server.on("paper")
-def choosePaper():
+@socket_server.on('paper')
+def choose_paper():
+    print("paper")
     message = {"username": request.sid, "action": "paper"}
     send_to_scala(message)
 
 
-@socket_server.on("scissors")
-def chooseScissors():
+@socket_server.on('scissors')
+def choose_scissors():
+    print("scissors")
     message = {"username": request.sid, "action": "scissors"}
     send_to_scala(message)
+
 
 @app.route('/')
 def index():

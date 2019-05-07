@@ -122,14 +122,17 @@ function drawGameObject2(x, y) {
 }
 
 
-function chooseRock() {
-    socket.emit("rock")
+function choose_rock() {
+    socket.emit('rock');
+    console.log("1");
 }
 
-function choosePaper() {
-    socket.emit("paper")
+function choose_paper() {
+    socket.emit('paper');
+    console.log("2");
 }
 
-function chooseScissors(){
-    socket.emit("scissors")
+function choose_scissors(){
+    socket.emit('scissors');
+    console.log("3");
 }
