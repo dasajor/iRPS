@@ -118,6 +118,7 @@ class Game {
       "projectiles" -> Json.toJson(this.projectiles.map({ po => Json.toJson(Map("x" -> po.location.x, "y" -> po.location.y)) }))
     )
 
+
     Json.stringify(Json.toJson(gameState))
   }
   def checkForBaseDamage(): Unit = {
